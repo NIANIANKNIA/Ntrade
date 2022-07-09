@@ -1,7 +1,7 @@
 # Ntrade - A new generation of player trading market plugins
 Ntrade is a LLSE-based Minecraft server player trading market plug-in, based on JavaScript to bring players an efficient and convenient experience.
 
-##### English | [简体中文](README.md)
+##### language：English | [简体中文](README.md)
 
 ## Plugin features
 - **Multilingual** Currently supports Simplified Chinese and English, more languages will be supported in subsequent updates
@@ -52,7 +52,7 @@ Configuration file location: `plugins/Ntrade/config.json`
             "aux": -1 //The special value of items that are prohibited from being listed (-1 means that the special value is not restricted)
         }
     ],
-    "language": "zh_CN", //The main language of the plugin
+    "language": "en_US", //The main language of the plugin
     "AutoOffShelfTime": 72, //Time of automatic off shelf (unit: hour), if set to -1, it will not automatically off shelf
     "TaxRate": 0 //Transfer tax rate, if it is set to 0, no handling fee will be charged. If necessary, please change it to any number in [0, 1).
 }
