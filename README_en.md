@@ -2,7 +2,7 @@
 Ntrade is a LLSE-based Minecraft server player trading market plug-in, based on JavaScript to bring players an efficient and convenient experience.
 
 ## Plugin features
-- **Multilingual** Currently supports Simplified Chinese and English, more languages ​​will be supported in subsequent updates
+- **Multilingual** Currently supports Simplified Chinese and English, more languages will be supported in subsequent updates
 
 - **Full GUI** All functions have corresponding GUI interface
 
@@ -65,7 +65,7 @@ You must accept Minecraft's End User License Agreement (EULA).
 
 - It means **Do not commercialize anything that violates the EULA**
 - By accepting this **license** you also **accept** the [Minecraft EULA](https://account.mojang.com/terms)
-- If you violate the **EULA**, any legal responsibility is not with the developer **
+- If you violate the **EULA**, any legal responsibility is **not with the developer **
 - **The developer is not responsible for you, and the developer is not obliged to write code for you and be responsible for any consequences caused by your use**
 
 Also, you need to abide by the terms of the `AGPL-3.0` open source license for this project
