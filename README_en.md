@@ -1,6 +1,8 @@
 # Ntrade - A new generation of player trading market plugins
 Ntrade is a LLSE-based Minecraft server player trading market plug-in, based on JavaScript to bring players an efficient and convenient experience.
 
+##### English | [简体中文](README.md)
+
 ## Plugin features
 - **Multilingual** Currently supports Simplified Chinese and English, more languages will be supported in subsequent updates
 
