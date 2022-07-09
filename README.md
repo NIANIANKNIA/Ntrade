@@ -1,2 +1,2 @@
 # Ntrade
-*An llse plugin that can implement transactions between players
+*An llse plugin that can implement transactions between players*
