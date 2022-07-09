@@ -57,8 +57,12 @@ Configuration file location: `plugins/Ntrade/config.json`
     "TaxRate": 0 //Transfer tax rate, if it is set to 0, no handling fee will be charged. If necessary, please change it to any number in [0, 1).
 }
 ````
+### start using
+
+Enter the /trade command in the server to open the GUI for corresponding operations
 
 ## Contact the author
+
 Email: nianianknia@163.com
 
 ## License
