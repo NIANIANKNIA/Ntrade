@@ -1,0 +1,15 @@
+{
+    "marketID": 1,
+    "llmoney": 0,
+    "MoneyScoresBoardName": "money",
+    "Password": "123456",
+    "BanItems": [
+        {
+            "type": "minecraft:clock",
+            "aux": -1
+        }
+    ],
+    "language": "zh_CN",
+    "AutoOffShelfTime": 72,
+    "TaxRate": 0
+}
