@@ -1,6 +1,3 @@
-//LiteLoaderScript Dev Helper
-/// <reference path="d:\minecraftserver\bedrock-server-1.18.32.02\plugins/Library/JS/Api.js" />
-
 ////////////////////////////////////////////////////////////////
 //关于本插件的一些基本信息
 //作者：NIANIANKNIA
