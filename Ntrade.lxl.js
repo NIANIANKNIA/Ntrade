@@ -38,7 +38,7 @@ const config_path = './plugins/NTrade/config.json';
 
 const PLUGIN_NAME = "NTrade";
 const PLUGIN_DESCRIPTION = "NTrade 玩家交易--玩家间的自由交易市场";
-const VERSION = [1,0,8];
+const VERSION = [1,0,9];
 const AUTHOR = "NIANIANKNIA";
 
 //插件日志消息标头
@@ -327,16 +327,6 @@ switch (niaconfig.get("language")) {
         }
         break;
 }
-// colorLog("green",`
-// ===================================================
-// ███╗   ██╗████████╗██████╗  █████╗ ██████╗ ███████╗
-// ████╗  ██║╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔════╝
-// ██╔██╗ ██║   ██║   ██████╔╝███████║██║  ██║█████╗
-// ██║╚██╗██║   ██║   ██╔══██╗██╔══██║██║  ██║██╔══╝
-// ██║ ╚████║   ██║   ██║  ██║██║  ██║██████╔╝███████╗
-// ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝
-// ===================================================
-// `)
 
 
 //注册插件
@@ -351,7 +341,6 @@ ll.registerPlugin(PLUGIN_NAME, PLUGIN_DESCRIPTION, VERSION, {"作者":AUTHOR});
 function OffShelf() {
     market = JSON.parse(File.readFrom(market_path));
     let time = new Date();
-    time.setTime(new Date(system.getTimeStr()).getTime());
     if (time.getMonth() < 9) {
         endMonth = 1 + time.getMonth();
         endMonth = "0" + endMonth;
@@ -651,7 +640,7 @@ function MainMenu(player) {
                                 PreAddItem.endTime = "2099-12-31 12:00:00";
                             } else {
                                 let time = new Date();
-                                time.setTime(new Date(system.getTimeStr()).getTime() + 3600000 * niaconfig.get("AutoOffShelfTime"));
+                                time.setTime(new Date().getTime() + 3600000 * niaconfig.get("AutoOffShelfTime"));
                                 if (time.getMonth() < 9) {
                                     endMonth = 1 + time.getMonth();
                                     endMonth = "0" + endMonth;
@@ -861,225 +850,6 @@ if (typeof(niaconfig.get("MoneyScoresBoardName"))=='string') {
             cmdTrade.overload([]);
         cmdTrade.setCallback((cmdTrade, origin, out, res) =>{
             MainMenu(origin.player);
-            // let TradeMenu = mc.newSimpleForm();
-            //     TradeMenu.setTitle(language.MainMenu_title);
-            //     TradeMenu.setContent("§c" + language.MainMenu_tip_info);
-            //     TradeMenu.addButton(language.MainMenu_view_button + "\n§9" + language.MainMenu_view_description_button);
-            //     TradeMenu.addButton(language.MainMenu_take_down_button + "\n§9" + language.MainMenu_take_down_description_button);
-            //     TradeMenu.addButton(language.MainMenu_edit_button + "\n§9" + language.MainMenu_edit_description_button);
-            //     TradeMenu.addButton(language.MainMenu_view_record_button + "\n§9" + language.MainMenu_view_record_description_button);
-            // origin.player.sendForm(TradeMenu,function(Tradeplayer, id) {
-            //     market = JSON.parse(File.readFrom(market_path));
-            //     OffShelf();
-            //     switch (id) {
-            //         case 0:
-            //             MarketMenu(Tradeplayer, market);
-            //             break;
-            //         case 1:
-            //             let HandItem = Tradeplayer.getHand();
-            //             let ItemNbt = HandItem.getNbt().toSNBT();
-            //             let BanItemResult = false;
-            //             let BanItems = niaconfig.get("BanItems");
-            //             for (let i = 0; i < BanItems.length; i++) {
-            //                 if (HandItem.type == BanItems[i].type && HandItem.aux == BanItems[i].aux ||HandItem.type == BanItems[i].type && BanItems[i].aux == -1) {
-            //                     BanItemResult = true;
-            //                 }
-            //             }
-            //             if (ItemNbt == "{\"Count\":0b,\"Damage\":0s,\"Name\":\"\",\"WasPickedUp\":0b}" || ItemNbt == "{\"Count\":0b,\"Damage\":0s,\"Name\":\"\",\"WasPickedUp\":1b}") {
-            //                 Tradeplayer.tell("§c>> " + language.err_empty_info)
-            //             } else if(!BanItemResult) {
-            //                 let AddItemMenu = mc.newCustomForm();
-            //                 AddItemMenu.setTitle(language.OnShelfMenu_title);
-            //                 AddItemMenu.addLabel("§c" + language.OnShelfMenu_info);
-            //                 AddItemMenu.addLabel("§e" + language.OnShelfMenu_nbt_info + ":\n" + ItemNbt + "\n ");
-            //                 AddItemMenu.addInput(language.OnShelfMenu_name_input, language.OnShelfMenu_name_description_input);
-            //                 AddItemMenu.addInput(language.OnShelfMenu_description_input, language.OnShelfMenu_description_description_input);
-            //                 AddItemMenu.addInput(language.OnShelfMenu_price_input, language.OnShelfMenu_price_description_input);
-            //                 Tradeplayer.sendForm(AddItemMenu,function(AddItemPlayer, AddItemDates) {
-            //                     if (AddItemDates == null) {
-            //                         AddItemPlayer.tell("§c>> " + language.cancel_operation_info);
-            //                     } else if (AddItemDates[2] == "" || AddItemDates[4] == "") {
-            //                         AddItemPlayer.tell("§c>> " + language.err_take_down_info);
-            //                     } else {
-            //                         let PreAddItem = {};
-            //                         PreAddItem.ID = niaconfig.get("marketID");
-            //                         niaconfig.set("marketID", niaconfig.get("marketID") + 1);
-            //                         PreAddItem.player = AddItemPlayer.realName;
-            //                         PreAddItem.name = AddItemDates[2];
-            //                         PreAddItem.description = AddItemDates[3];
-            //                         PreAddItem.type = "item";
-            //                         let havenum = containsNumber(AddItemDates[4])
-            //                         if (havenum) {
-            //                             PreAddItem.price = parseInt(AddItemDates[4]);
-            //                         } else {
-            //                             AddItemPlayer.tell("§c>> " + language.err_price_format_info);
-            //                             PreAddItem.price = 10000;
-            //                         }
-            //                         PreAddItem.nbt = ItemNbt;
-            //                         PreAddItem.enabled = true;
-            //                         PreAddItem.reason = "";
-            //                         if (niaconfig.get("AutoOffShelfTime") == -1) {
-            //                             PreAddItem.endTime = "2099-12-31 12:00:00";
-            //                         } else {
-            //                             let time = new Date();
-            //                             time.setTime(new Date(system.getTimeStr()).getTime() + 3600000 * niaconfig.get("AutoOffShelfTime"));
-            //                             if (time.getMonth() < 9) {
-            //                                 endMonth = 1 + time.getMonth();
-            //                                 endMonth = "0" + endMonth;
-            //                             } else {
-            //                                 endMonth = 1 + time.getMonth();
-            //                             }
-            //                             if (time.getDate() < 10) {
-            //                                 endDate = "0" + time.getDate();
-            //                             } else {
-            //                                 endDate = time.getDate();
-            //                             }
-            //                             if (time.getHours() < 10) {
-            //                                 endHour = "0" + time.getHours();
-            //                             } else {
-            //                                 endHour = time.getHours();
-            //                             }
-            //                             if (time.getMinutes() < 10) {
-            //                                 endMinute = "0" + time.getMinutes();
-            //                             } else {
-            //                                 endMinute = time.getMinutes();
-            //                             }
-            //                             if (time.getSeconds() < 10) {
-            //                                 endSecond = "0" + time.getSeconds();
-            //                             } else {
-            //                                 endSecond = time.getSeconds();
-            //                             }
-            //                             PreAddItem.endTime = time.getFullYear() + "-" + endMonth + "-" + endDate + " " + endHour + ":" + endMinute + ":" + endSecond;
-            //                         }
-            //                         market.push(PreAddItem);
-            //                         File.writeTo(market_path,JSON.stringify(market, null, 2));
-            //                         //////////////////////////////////////////
-            //                         let haveItems = Tradeplayer.getInventory().getAllItems();
-            //                         for(let i = 0; i < haveItems.length; i++) {
-            //                             let item = haveItems[i];
-            //                             if (item.getNbt().toString() == NBT.parseSNBT(PreAddItem.nbt).toString()) {
-            //                                 item.setNull();
-            //                                 Tradeplayer.refreshItems();
-            //                                 Tradeplayer.tell("§e>> " + language.onshelf_success_info);
-            //                                 break;
-            //                             }
-            //                         }
-            //                         //////////////////////////////////////////
-            //                     }
-            //                 })
-            //             } else if(BanItemResult) {
-            //                 Tradeplayer.tell("§c>> " + language.err_onshelf_banitem_info);
-            //             }
-            //             break;
-            //         case 2:
-            //             let PlShopMenu = mc.newSimpleForm();
-            //                 PlShopMenu.setTitle(language.OpOnShelfMenu_title);
-            //             let haveItems = false;
-            //                 for (let i = 0; i < market.length; i++) {
-            //                     if (market[i].player == Tradeplayer.realName) {
-            //                         if (market[i].enabled) {
-            //                             PlShopMenu.addButton("§1[§r§9" + language.enable_true_button1 + "§r] " + market[i].name + "§r " + language.enable_true_button2 + "：§9 " + market[i].price + "§9\n" + market[i].description);
-            //                         } else {
-            //                             PlShopMenu.addButton("§r§c[" + language.enable_false_button1 + "] §r" + market[i].name + "§9\n" + language.enable_false_button2 + "：" + market[i].reason);
-            //                         }
-            //                         haveItems = true;
-            //                     }
-            //                 }
-            //             if (!haveItems) {
-            //                 PlShopMenu.setContent("§c" + language.item_null_info);
-            //             }
-            //             Tradeplayer.sendForm(PlShopMenu,function(OpItemsPlayer, OpItemsID) {
-            //                 if (OpItemsID == null) {
-            //                     OpItemsPlayer.tell("§c>> " + language.cancel_operation_info);
-            //                 } else {
-            //                     for (let i = 0; i < market.length; i++) {
-            //                         if (market[i].player != Tradeplayer.realName) {
-            //                             if (i <= OpItemsID) {
-            //                                 OpItemsID++;
-            //                             }
-            //                         }
-            //                     }
-            //                     if (market[OpItemsID].enabled) {
-            //                         let editItemMenu = mc.newSimpleForm();
-            //                         editItemMenu.setTitle(language.chose_op_itemMenu_title);
-            //                         editItemMenu.addButton(language.chose_op_itemMenu_edit_button);
-            //                         editItemMenu.addButton(language.chose_op_itemMenu_take_down_button);
-            //                         OpItemsPlayer.sendForm(editItemMenu,function(editItemPlayer, editItemID) {
-            //                             switch (editItemID) {
-            //                                 case 0:
-            //                                     let editMenu = mc.newCustomForm();
-            //                                         editMenu.setTitle(language.edit_itemMenu_title);
-            //                                         editMenu.addInput(language.OnShelfMenu_name_input, language.OnShelfMenu_name_description_input, market[OpItemsID].name);
-            //                                         editMenu.addInput(language.OnShelfMenu_description_input, language.OnShelfMenu_description_description_input, market[OpItemsID].description);
-            //                                         editMenu.addInput(language.OnShelfMenu_price_input, language.OnShelfMenu_price_description_input, market[OpItemsID].price.toString());
-            //                                         editItemPlayer.sendForm(editMenu,function(editItemPlayer, editItemDates) {
-            //                                             if (editItemDates == null) {
-            //                                                 editItemPlayer.tell("§c>> " + language.cancel_operation_info);
-            //                                             } else if (editItemDates[0] == "" || editItemDates[2] == "") {
-            //                                                 editItemPlayer.tell("§c>> " + language.err_take_down_info);
-            //                                             } else {
-            //                                                 market[OpItemsID].name = editItemDates[0];
-            //                                                 market[OpItemsID].description = editItemDates[1];
-            //                                                 let havenum = containsNumber(editItemDates[2])
-            //                                                 if (havenum) {
-            //                                                     market[OpItemsID].price = parseInt(editItemDates[2]);
-            //                                                     editItemPlayer.tell(language.err_price_format_info)
-            //                                                 } else {
-            //                                                     market[OpItemsID].price = 10000;
-            //                                                 }
-            //                                                 File.writeTo(market_path,JSON.stringify(market, null, 2));
-            //                                                 Tradeplayer.tell("§e>> " + language.edit_item_success_info);
-            //                                             }
-            //                                         })
-            //                                     break;
-            //                                 case 1:
-            //                                     let result = OpItemsPlayer.getInventory().addItemToFirstEmptySlot(mc.newItem(NBT.parseSNBT(market[OpItemsID].nbt)));
-            //                                     OpItemsPlayer.refreshItems();
-            //                                     if (result) {
-            //                                         OpItemsPlayer.tell("§e>> " + language.item_back_info);
-            //                                         market.splice(OpItemsID,1);
-            //                                         File.writeTo(market_path,JSON.stringify(market, null, 2));
-            //                                     } else {
-            //                                         OpItemsPlayer.tell("§c>> " + language.err_give_item_info);
-            //                                     }
-            //                                     break;
-            //                             }
-            //                         });
-            //                     } else {
-            //                         let result = OpItemsPlayer.getInventory().addItemToFirstEmptySlot(mc.newItem(NBT.parseSNBT(market[OpItemsID].nbt)));
-            //                         OpItemsPlayer.refreshItems();
-            //                         if (result) {
-            //                             OpItemsPlayer.tell("§e>> " + language.item_back_info);
-            //                             market.splice(OpItemsID,1);
-            //                             File.writeTo(market_path,JSON.stringify(market, null, 2));
-            //                         } else {
-            //                             OpItemsPlayer.tell("§c>> " + language.err_give_item_info);
-            //                         }
-            //                     }
-            //                 }
-            //             })
-            //             break;
-            //         case 3:
-            //             PlayerTradeDate = JSON.parse(File.readFrom(PlayerTradeDate_path));
-            //             let Tradeinfo = mc.newCustomForm();
-            //                 Tradeinfo.setTitle(language.TradeDateMenu_title);
-            //                 let havedate = false;
-            //                 for (let i = 0; i <PlayerTradeDate.length; i++) {
-            //                     if (PlayerTradeDate[i].seller == Tradeplayer.realName) {
-            //                         Tradeinfo.addLabel("§e【" + language.TradeDateMenu_sell_info1 + "】 " + language.TradeDateMenu_sell_info2 + " " + PlayerTradeDate[i].ID + "\n" + language.TradeDateMenu_sell_info3 + ": " + PlayerTradeDate[i].buyer + "\n" + language.TradeDateMenu_sell_info4 + "： " + PlayerTradeDate[i].endtime + "\n" + language.TradeDateMenu_sell_info5 + "： " + PlayerTradeDate[i].date.price + "\n" + language.TradeDateMenu_sell_info6 + "： " + PlayerTradeDate[i].date.name + "\n§r§e" + language.TradeDateMenu_sell_info7 + "： " + PlayerTradeDate[i].date.description + "\n§r§e" + language.TradeDateMenu_sell_info8 + "： " + PlayerTradeDate[i].date.nbt + "\n ");
-            //                         havedate = true;
-            //                     } else if (PlayerTradeDate[i].buyer == Tradeplayer.realName) {
-            //                         Tradeinfo.addLabel("§e【" + language.TradeDateMenu_buy_info1 + "】 " + language.TradeDateMenu_sell_info2 + " " + PlayerTradeDate[i].ID + "\n" + language.TradeDateMenu_sell_info3 + ": " + PlayerTradeDate[i].buyer + "\n" + language.TradeDateMenu_sell_info4 + "： " + PlayerTradeDate[i].endtime + "\n" + language.TradeDateMenu_sell_info5 + "： " + PlayerTradeDate[i].date.price + "\n" + language.TradeDateMenu_sell_info6 + "： " + PlayerTradeDate[i].date.name + "\n§r§e" + language.TradeDateMenu_sell_info7 + "： " + PlayerTradeDate[i].date.description + "\n§r§e" + language.TradeDateMenu_sell_info8 + "： " + PlayerTradeDate[i].date.nbt + "\n ");
-            //                         havedate = true;
-            //                     }
-            //                 }
-            //                 if (!havedate) {
-            //                     Tradeinfo.addLabel("§c" + language.TradeDateMenu_date_null_info)
-            //                 }
-            //             Tradeplayer.sendForm(Tradeinfo,function(pl, date) {})
-            //             break;
-            //     }
-            // })
         })
         cmdTrade.setup();
     })
