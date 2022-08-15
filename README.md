@@ -60,7 +60,9 @@ Ntrade是一个基于LLSE的MC服务器玩家交易市场插件，基于JavaScri
 
 ### 开始使用
 
-在服务器中输入/trade指令打开GUI进行相应操作
+1.在服务器中输入/trade指令打开GUI进行相应操作
+
+2.您可以输入/opentradegui @p给最近的玩家打开交易市场GUI
 
 ## 联系作者
 email：nianianknia@163.com qq:1020317403
