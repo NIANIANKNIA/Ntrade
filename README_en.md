@@ -60,6 +60,7 @@ Configuration file location: `plugins/Ntrade/config.json`
 ### start using
 
 1.Enter the /trade command in the server to open the GUI for corresponding operations
+
 2.You can open the trading market GUI for the nearest player by typing /opentradegui @p
 
 ## Contact the author
