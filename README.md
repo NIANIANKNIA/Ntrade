@@ -1,4 +1,7 @@
 # Ntrade - 新一代玩家交易市场插件
+
+**本项目已经停止更新！**
+
 Ntrade是一个基于LLSE的MC服务器玩家交易市场插件，基于JavaScript为玩家带来高效便捷的使用体验。
 
 ##### 语言：[English](README_en.md) | 简体中文
